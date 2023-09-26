@@ -32,6 +32,8 @@ In the worst case, when n is large, there will be a large number of function cal
 
 Keep in mind that exponential time and space complexity can make the algorithm impractical for large values of n due to its computational cost. However, it works well for small values of n and provides a clear way to generate all possible paths for climbing the staircase.
 
+In summary, the time and space complexity of the getStairPaths function is O(3^n), where 'n' is the number of steps in the staircase. It exhibits exponential time and space complexity due to the nature of considering all possible combinations of steps to climb the staircase.
+
 
 */
 

@@ -1,10 +1,21 @@
 /*
 Get Maze Path With Jumps
 
+Analysis
+Well, this is going to be fun. Try and understand every step from here as it is going to be a little bit tilted to mathematics.
 
+Time Complexity :
+The time complexity of the algorithm will depend on 3 recursive calls, one which is made for rows, the second which is made for the columns, and the other which is made for the diagonals.
 
+T(n, m) = T(n, m - 1) [Row call] + T(n - 1, m) [Column call] + T(n - 1, m - 1) [Diagonal call]
+T(n, m) <= 3T(n - 1, m)
 
+T(n, m) <= (3 ^ n)T(0, m)
 
+Total time complexity = O(3 ^ (n + m))
+
+Space Complexity 
+The space complexity cannot be defined when space is increasing continuously (as the Arraylist size keeps on increasing with new paths being added). In these situations, the space complexity is approx the same as time complexity. Remember, the space complexity is only valid if we have used any extra memory or data structure. We used Arraylist because we were asked to store the paths in the question. So, we have not used any extra data structure. So, the space complexity will be O(1).
 
 */
 
