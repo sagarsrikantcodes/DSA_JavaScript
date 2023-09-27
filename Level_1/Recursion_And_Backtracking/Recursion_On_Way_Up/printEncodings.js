@@ -20,9 +20,31 @@ input: 103
 output:
 "jc"
 
+Algorithm:
+Here's a summary of the code:
+
+You have defined an object called object that maps digits from '1' to '26' to their corresponding alphabet characters.
+
+The printEncodings function is a recursive function that takes two parameters: str (the input string to be encoded) and ans (the current encoding being built).
+
+In the base case, if the input string str is empty, it prints the current encoding ans.
+
+In the recursive case, it checks the first character of str:
+
+If the first character is not '0', it considers the single-character encoding (e.g., '1' maps to 'a') and makes a recursive call with the rest of the string.
+It also checks if the first two characters form a valid encoding (e.g., '12' maps to 'ab'). If so, it makes a recursive call with the remaining string.
+The code handles cases where the input string starts with '0' and returns immediately, indicating that such strings are invalid.
+
+You have provided several test cases, and the code produces the expected output for those test cases.
+
+
 Complexity Analysis:
 1. Time Complexity = O(2 ^ n), where n is the length of the string
 2. Space Complexity = O(n), Due to recursive call stack
+
+The time complexity of this code is O(2^n), where n is the length of the string, as in the worst case, you explore two possibilities for each character.
+
+The space complexity is O(n) due to the recursive call stack.
 
 */
 
