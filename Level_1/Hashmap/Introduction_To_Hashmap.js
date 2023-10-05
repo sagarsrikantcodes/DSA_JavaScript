@@ -174,6 +174,29 @@ Each value is visited once, except in the case when it was deleted and re-added 
 
 map.forEach((value, key) => console.log(key, value));
 
+ Using for…of loop
+The for…of loop iterates over the iterable objects (like Array, Map, Set, arguments object, …, etc), invoking a custom iteration hook with statements to be executed for the value of each distinct property.
+
+Syntax:
+
+for ( variable of iterableObjectName) {
+    ...
+}
+
+Example: In this example, we are using for…of the loop to iterate over the map object. 
+
+// Display the key value pairs of a hashmap using for...of() loop 
+for (let [key, value] of map) {
+  console.log(`${key} => ${value}`);
+} 
+
+Outputs:
+India => 140
+China => 135
+USA => 0.35
+Canada => 0.03
+Nigeria => 5
+
 */
 
 const map = new Map();
