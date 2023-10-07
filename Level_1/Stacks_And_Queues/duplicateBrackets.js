@@ -136,9 +136,10 @@ class Stack {
   }
 }
 
-let stack = new Stack();
+
 
 function hasDuplicateBracket(str) {
+  let stack = new Stack();
 
   for (let idx = 0; idx < str.length; idx += 1) {
     let ch = str.charAt(idx);
