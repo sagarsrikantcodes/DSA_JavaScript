@@ -215,3 +215,32 @@ console.log(queue.dequeue());
 console.log(queue.queueItems());
 console.log(queue.peek());
 
+/*
+
+Outputs:
+
+10 
+10 20 
+10 20 30 
+10 20 30 40 
+10 20 30 40 50 
+10 20 30 40 50 60 
+10
+10
+20 30 40 50 60 
+20
+20
+30 40 50 60 
+30
+30
+40 50 60 
+40
+40
+50 60 
+50
+50
+60 
+60
+60
+
+*/
