@@ -73,7 +73,8 @@ function getInfixExpressionValue(expression) {
       operatorStack.pop();
     } else {
       if (char === '+' || char === '-' || char === '*' || char === '/') {
-        while (operatorStack.length > 0 && orderOfPrecedence(operatorStack[operatorStack.length - 1]) >= orderOfPrecedence(char)) {
+        while (operatorStack.length > 0 && orderOfPrecedence(operatorStack[operatorStack.length - 1]) >= orderOfPrecedence(char)
+          && operatorStack[operatorStack.length - 1] !== '(') {
           let op = operatorStack.pop();
           let val2 = operandStack.pop();
           let val1 = operandStack.pop();
