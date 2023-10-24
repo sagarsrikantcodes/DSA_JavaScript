@@ -158,7 +158,7 @@ class LinkedList {
     // Put the next node of newly created node of value, val equal to the current node at idx. 
     // if index, i is equal to idx - 1, then assign temp.next to the newly created node. 
     // Increment the size of the linked list. 
-    console.log("List size is " + list.getSize());
+    // console.log("List size is " + list.getSize());
 
     if (idx === 0) {
       this.addFirst(val);
@@ -188,6 +188,119 @@ class LinkedList {
         temp = temp.next;
       }
       this.size += 1;
+    }
+  }
+
+  /*
+  You are required to complete the body of removeLast function. This function should remove the last element and update appropriate data members. If the size is 0, should print "List is empty". If the size is 1, should set both head and tail to null.
+  */
+  removeLast() {
+    if (this.size === 0) {
+      console.log("List is empty");
+      return;
+    } else if (this.size === 1) {
+      this.head = null;
+      this.tail = null;
+      this.size -= 1;
+    } else {
+
+      for (let temp = this.head; temp !== null; temp = temp.next) {
+        if (temp.next === this.tail) {
+          temp.next = null;
+          this.tail = temp;
+        }
+      }
+
+      this.size -= 1;
+    }
+  }
+
+  /*
+  You are required to complete the body of removeAt function. The function should remove the element available at the index passed as parameter. If the size is 0, should print "List is empty". If the index is inappropriate print "Invalid arguments". Also consider the case when list has a single element.
+  */
+
+  removeAt(idx) {
+    if (this.size === 0) {
+      console.log("List is empty");
+      return;
+    } else if (idx < 0 || idx >= this.size) {
+      console.log("Invalid arguments");
+      return;
+    } else if (idx === 0 && this.size > 0) {
+      this.removeFirst();
+    } else if (this.size > 0 && idx === this.size - 1) {
+      this.removeLast();
+    } else {
+      let temp = this.head;
+      let nodeAtIdx;
+      for (let i = 0; i < this.size; i += 1) {
+        if (i === idx) {
+          nodeAtIdx = temp;
+          break;
+        }
+        temp = temp.next;
+      }
+
+      temp = this.head;
+      for (let i = 0; i < this.size; i += 1) {
+        if (i === idx - 1) {
+          temp.next = nodeAtIdx.next;
+          nodeAtIdx.next = null;
+          break;
+        }
+        temp = temp.next;
+      }
+      // nodeAtIdx.next = null;
+      this.size -= 1;
+    }
+  }
+  /*
+  You are required to complete the body of reverseDI function. The function should be an iterative function and should reverse the contents of linked list by changing the "data" property of nodes.
+  */
+  reversePI() {
+    let currentNode = this.head;
+    let prevNode = null;
+
+    while (currentNode !== null) {
+      let nextNode = currentNode.next;
+      currentNode.next = prevNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+    // this.display(); // 60
+    // Swap the head and tail nodes 
+    [this.head, this.tail] = [this.tail, this.head];
+
+  }
+
+  getNodeAt(idx) {
+    if (idx === 0) {
+      return this.head;
+    } else if (idx === this.size - 1) {
+      return this.tail;
+    } else {
+      let temp = this.head;
+      let res = null;
+
+      for (let i = 0; i < this.size; i += 1) {
+        if (i === idx) {
+          res = temp;
+          break;
+        }
+        temp = temp.next;
+      }
+
+      return res;
+    }
+  }
+
+  reverseDI() {
+    let left = 0;
+    let right = this.size - 1;
+    while (left < right) {
+      [this.getNodeAt(left).data, this.getNodeAt(right).data] = [this.getNodeAt(right).data, this.getNodeAt(left).data];
+      left += 1;
+      right -= 1;
     }
   }
 }
@@ -376,7 +489,7 @@ Space Complexity:
 The space complexity of the above solution is O(1) as we have not used any extra memory for our work.
 
 */
-
+/*
 list.addFirst(10);
 console.log(list.getFirst()); // 10
 console.log(list);
@@ -410,7 +523,7 @@ list.display(); // 40 60
 list.removeFirst();
 list.display(); // 60
 console.log(list.getFirst()); // 60
-
+*/
 /*
 Complexity Analysis for Add at Index in Linked List :
 
@@ -421,6 +534,131 @@ Space Complexity:
 We are not using any auxiliary space other than a single new node, So the space complexity is constant as well.
 
 */
+/*
+list.addFirst(10);
+list.display(); // 10
+console.log(list.getFirst()); // 10 
+list.addAt(0, 20);
+list.display(); // 20 10 
+console.log(list.getFirst()); // 20 
+console.log(list.getLast()); // 10
+list.display(); // 20 10
+console.log(list.getSize()); // 2
+list.addAt(2, 40);
+list.display(); // 20 10 40
+console.log(list.getLast()); // 40
+list.addAt(1, 50);
+list.display(); // 20 50 10 40
+list.addFirst(30);
+list.display(); // 30 20 50 10 40
+list.removeFirst();
+list.display(); // 20 50 10 40 
+console.log(list.getFirst()); // 20
+list.display(); // 20 50 10 40
+list.removeLast();
+list.display(); // 20 50 10
+list.removeLast();
+list.display(); // 20 50
+list.addAt(2, 60);
+list.display(); // 20 50 60
+console.log(list.getSize()); // 3
+list.removeFirst();
+list.display(); // 50 60
+list.removeLast();
+list.display(); // 50
+console.log(list.getFirst()); // 50
+*/
+/*
+list.addFirst(10);
+console.log(list.getFirst());
+list.addAt(0, 20);
+console.log(list.getFirst());
+console.log(list.getLast());
+list.display();
+console.log(list.getSize());
+list.addAt(2, 40);
+console.log(list.getLast());
+list.addAt(1, 50);
+list.addFirst(30);
+list.removeAt(2);
+console.log(list.getFirst());
+list.removeAt(0);
+list.removeAt(1);
+list.addAt(2, 60);
+list.display();
+console.log(list.getSize());
+list.removeAt(0);
+list.removeAt(1);
+console.log(list.getFirst());
+*/
+
+/*
+
+Analysis for Remove at index, idx in Linked list
+Time Complexity:
+O(n)
+
+A 'for' loop has been used therefore the time complexity becomes O(n).
+
+Space Complexity:
+O(1)
+
+Since no extra space has been used therefore the space complexity becomes O(1).
+
+*/
+/*
+list.addFirst(10);
+list.addFirst(20);
+list.addLast(30);
+list.addLast(40);
+list.addLast(50);
+list.addFirst(60);
+list.removeAt(2);
+list.display(); // 60 20 30 40 50
+list.reversePI();
+list.display(); // 50 40 30 20 60 
+*/
+
+/*
+addFirst 10
+addFirst 20
+addLast 30
+addLast 40
+addLast 50
+addFirst 60
+removeAt 2
+display
+reversePI
+display
+quit
 
 
+
+*/
+
+list.addFirst(10);
+list.addFirst(20);
+list.addLast(30);
+list.addLast(40);
+list.addLast(50);
+list.addFirst(60);
+list.removeAt(2);
+list.display(); // 60 20 30 40 50
+list.reverseDI();
+list.display(); // 50 40 30 20 60 
+
+/*
+Analysis for reverseDI()
+
+Time Complexity:
+O(n2)
+
+The getNodeAt() function is a linear function and the number of calls to that function will be at max n. Because we will do n/2 calls for the left node and n/2 for the right node. So the total complexity is n*O(n) = O(n2)
+
+Space Complexity:
+O(1)
+
+We are not using any extra space so the space complexity will remain constant.
+
+*/
 
